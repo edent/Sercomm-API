@@ -744,10 +744,26 @@ mcast_hops=16
     * `mcast_audio_addr` Audio multicast IP address. 
     * `mcast_audio_port` Audio port number.
         * `1024` to `65534` **Even numbers only**.
-    * `mcast_hops` Multicast time to leave value. The value can be 
-1-255.
+    * `mcast_hops` Multicast time to live value.
+        * `1` to `255`
 
-    
+### Universal Plug and Play
+* Get all UPNP configuration
+    * `/adm/get_group.cgi?group=UPNP`
+        * Response:
+
+```
+[UPNP]
+upnp_mode=0
+upnp_traversal=
+upnp_camera=
+```
+
+* Properties which can be set using `/adm/set_group.cgi?group=UPNP&$property=$value`
+    * `upnp_mode`
+            * `0` Off (Default)
+            * `1` On 
+                
 ## TODO!
 If you can help with these missing piece of functionality, I would be most grateful.
 
