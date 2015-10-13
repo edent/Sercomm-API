@@ -465,8 +465,294 @@ The cameras can upload images and videos to local network shares.
     * `timeout=` value in seconds between 5 - 120. Default is 30. Camera will stop searching after this time.
     * `action=stop` force the camera to stop searching.
     
+## Other Configuration Groups
+Sercomm's configuration API uses the concept of "groups".
+
+* For example, you can **get** all the "System" group properties by calling:
+    * `/adm/get_group.cgi?group=SYSTEM`
+* Each parameter can be retrieved individually
+    * `/adm/get_group.cgi?group=SYSTEM.ntp_server`
+* You can **set** a group's properties by calling:
+    * `/adm/set_group.cgi?group=SYSTEM&$property=$value`
+        * e.g. `/adm/set_group.cgi?group=SYSTEM&ntp_server=0.uk.pool.ntp.org`
+    * **Note** some of the properties are *read only*.
+
+
+### System Configuration
+* All the "System" group properties by calling:
+    * `/adm/get_group.cgi?group=SYSTEM`
+        * Response:
+        
+```
+[SYSTEM]
+cfg_ver=RC8230_XANBOO_0001
+host_name=MyCamera
+comment=
+time_format=24
+date_format=1
+time_zone=26
+daylight_saving=1
+ntp_mode=1
+ntp_server=clock.via.net
+ntp_date=0
+ntp_hour=6
+ntp_min=1
+led_mode=1
+reboot_time=2015-10-13 06:46:54
+boot_up_time=2015-10-13 11:55:22
+reboot_reason=Reboot by Internal (Reason: hydra is gone)
+wd_timer_wifi=20
+wd_timer_idled=300
+wd_timer_acted=180
+wd_reboot_num=347
+wd_reboot_time=1444713006;1444585286
+
+```
+
+* Properties which can be set using `/adm/set_group.cgi?group=SYSTEM&$property=$value`.
+    * `host_name` Camera's name. Maximum of 16 characters, 0-9, A-Z, a-z, space.
+    * `comment ` Camera's description. Maximum of 32 ASCII characters. 
+    * `time_format` Valid values are 
+        * `24-hour`
+        * `12-hour`
+    * `date_format` Valid values are
+        * `1` ???
+        * `2` ???
+        * `3` ???
+    * `time_zone` Valid values are 0-75.
+    * `daylight_saving` Valid values are
+        * `0` Off 
+        * `1` On 
+    * `ntp_mode ` Synchronise with an NTP server. Valid values are
+        * `0` Off 
+        * `1` On 
+    * `ntp_server` Which NTP server to use. Set using a domain name of up to 64 characters.
+    * `led_mode` Keep the camera's information LED on. Valid values are
+        * `0` Off 
+        * `1` On 
+
+### Logging
+* Get all log configuration
+    * `/adm/get_group.cgi?group=LOG`
+        * Response:
+        
+```
+[LOG]
+log_mode=1
+log_level=3
+syslog_mode=0
+syslog_server=
+syslog_port=514
+im_mode=0
+im_server=
+im_account=
+im_password=
+im_sendto=
+im_message=
+ftplog_mode=1
+smtplog_mode=1
+systemlog_mode=1
+imlog_mode=1
+```
+
+* Properties which can be set using `/adm/set_group.cgi?group=LOG&$property=$value`.
+    * `syslog_mode ` Valid values are 
+        * `0` Off 
+        * `1` On 
+    * `syslog_server` Which Syslog server to use. Set using a domain name of up to 64 characters.
+    * Others ???
+    
+### Network
+
+* Get all Network configuration
+    * `/adm/get_group.cgi?group=NETWORK`
+        * Response:
+
+```
+[NETWORK]
+ip_addr=192.168.0.42
+netmask=255.255.255.0
+gateway=192.168.0.1
+dhcp=1
+dns_type=1
+dns_server1=192.168.0.1
+dns_server2=8.8.8.8
+wins_type=0
+wins_ip=
+```
+
+* Properties which can be set using `/adm/set_group.cgi?group=NETWORK&$property=$value`.
+    * `ip_addr` Camera's IP address.
+    * `netmask` Camera's netmask as IP address.
+    * `gateway` IP of the network gateway.
+    * `dhcp` Valid values are 
+        * `0` Fixed IP Address 
+        * `1` Use DHCP 
+    * `dns_type` Valid values are 
+        * `0` DNS servers assigned by DHCP
+        * `1` Manually assigned DNS servers
+    * `dns_server1` and `dns_server2` IP addresses of the DNS servers
+    * Others ???
+
+### Wireless
+
+* Get all WiFi configurations
+    * `/adm/get_group.cgi?group=WIRELESS`
+        * Response:
+
+```
+[WIRELESS]
+wlan_type=1
+wlan_essid=MyNetwork
+wlan_channel=0
+wlan_domain=5
+wlan_security=2
+wep_authtype=2
+wep_mode=1
+wep_index=1
+wep_ascii=
+wep_kep1=
+wep_kep2=
+wep_kep3=
+wep_kep4=
+wpa_ascii=
+wmm=0
+```
+
+* Properties which can be set using `/adm/set_group.cgi?group=NETWORK&$property=$value`.
+    * `wlan_type`   Valid values are 
+        * `0` Ad hoc
+        * `1` Infrastructure 
+        * `wlan_essid` The SSID to connect to. Maximum of 32 ASCII 
+characters. Case sensitive.
+        * `wlan_channel` Which WiFi channel number to use.
+            * `0` auto
+            * `1` - `13` a specific channel.
+        * `wlan_domain` Different countries have different WiFi channels
+            * `1` - Africa 
+            * `2` - Asia 
+            * `3` - Australia 
+            * `4` - Canada 
+            * `5` - Europe 
+            * `6` - Spain 
+            * `7` - France 
+            * `8` - Israel 
+            * `9` - Japan 
+            * `10` - Mexico 
+            * `11` - South American
+            * `12` - USA 
+        * `wlan_security` Which wireless security mode
+            * `0` - None 
+            * `1` - WEP 
+            * `2` - WPA/WPA2-PSK  
+            * `3` - WPA PSK TKIP  
+            * `4` - WPA PSK AES  
+            * `5` - WPA2 PSK TKIP  
+            * `6` - WPA2 PSK AES  
+            * `7` - WPA enterprise 
+            * `8` - WPA PSK 
+            * `9` - WPA2 PSK 
+        * `wpa_ascii` Set the password for WPA.  Must be between 8 and 63 characters. 
+        * `connection_mode` Which wireless mode to boot up to.
+            * `0` - If a connection is available over the Ethernet 
+interface, the device uses Ethernet; otherwise, it uses 
+wireless.
+            * `1` - The device use wireless whether a connection is 
+available over the Ethernet or not. 
+            * `2` - The device enters WPS PBC mode over wireless 
+whether a connection is available over the Ethernet or not. 
+            * `3` - The device enters WPS PIN code mode over 
+wireless whether a connection is available over the 
+Ethernet or not. 
+        * `wmm` Use [WMM mode](https://en.wikipedia.org/wiki/Wireless_Multimedia_Extensions). Valid values are 
+            * `0` Off 
+            * `1` On 
+    * `wpa_ep_auth_type` Set WPA/WPA2 Enterprise authentication type.
+            * `1` - EAP-TLS 
+            * `2` - EAP-TTLS 
+        * `wpa_tls_user` Set EAP-TLS user name. Maximum of 64 ASCII characters.
+        * `wpa_tls_priv_keypass` Set EAP-TLS private key password. Maximum of 64 ASCII characters.
+        * `wpa_ttls_auth_type` Set EAP-TTLS authentication type.
+            * `1` MSCHAP 
+            * `2` MSCHAPv2 
+            * `3` PAP 
+            * `4` EAP-MD5 
+            * `5` EAP-GTC 
+        * `wpa_ttls_user` Set EAP-TTLS User name. Maximum of 64 ASCII characters.
+        * `wpa_ttls_pass` Set EAP-TTLS user password. Maximum of 64 ASCII characters.
+        * `wpa_ttls_anony_name` Set EAP-TTLS/EAP-TLS anonymous name. Maximum of 64 ASCII characters.
+        
+### Dynamic DNS
+* Get all Dynamic DNS configuration
+    * `/adm/get_group.cgi?group=DDNS`
+        * Response:
+
+```
+[DDNS]
+ddns_mode=0
+ddns_service=
+ddns_account=
+ddns_password=
+ddns_host_name=
+ddns_hour=12
+ddns_minute=
+ddns_update_unit=3
+ddns_update_period=10
+```
+
+TODO! Many of the DDNS providers no longer work.
+
+### Real Time Streaming Protocol
+* Get all RTSP configuration
+    * `/adm/get_group.cgi?group=RTSP_RTP`
+        * Response:
+
+```
+[RTSP_RTP]
+rtsp_port=554
+rtp_port=5000
+rtp_size=1400
+mcast_enable=0
+mcast_video_enable=0
+mcast_video_addr=224.2.0.1
+mcast_video_port=2240
+mcast_h264_enable=0
+mcast_h264_addr=224.2.0.1
+mcast_h264_port=2242
+mcast_audio_enable=0
+mcast_audio_addr=224.2.0.1
+mcast_audio_port=2244
+mcast_hops=16
+```
+
+
+* Properties which can be set using `/adm/set_group.cgi?group=RTSP_RTP&$property=$value`
+    * `rtsp_port` RTSP port number. Valid values are
+        * `554`
+        * `1024` to `65535` 
+    * `rtp_port` RTP port number. Valid values
+        * `1024` to `65535`
+        * Default of `5000`
+    * `rtp_size` RTP packet size. Valid values
+        * `400` to `1400`
+    * `mcast_enable` RTP/RTSP multicast mode. Valid values are 
+            * `0` Off (Default)
+            * `1` On 
+    * `mcast_video_addr` Video multicast IP address.
+    * `mcast_video_port` Video port number. 
+        * `1024` to `65534` **Even numbers only**.
+    * `mcast_audio_addr` Audio multicast IP address. 
+    * `mcast_audio_port` Audio port number.
+        * `1024` to `65534` **Even numbers only**.
+    * `mcast_hops` Multicast time to leave value. The value can be 
+1-255.
+
+    
 ## TODO!
 If you can help with these missing piece of functionality, I would be most grateful.
 
 ### Sending Audio
 With the speakers enabled, it should be possible to POST an audio file to the cameras, either in G.726, or G.711 (a-law or u-law).   I've not been able to get this working.  [See further discussion](http://stackoverflow.com/questions/19686996/post-audio-to-a-network-camera).
+
+#### Missing Functionality
+Not all API calls are documented.  Not all which are in the official documentation are valid. Fill in the gaps :-)
