@@ -461,9 +461,9 @@ The cameras can upload images and videos to local network shares.
 </List>
 ```
 
-    * Optional parameters
-        * `timeout=` value in seconds between 5 - 120. Default is 30. Camera will stop searching after this time.
-        * `action=stop` force the camera to stop searching.
+* Optional parameters
+    * `timeout=` value in seconds between 5 - 120. Default is 30. Camera will stop searching after this time.
+    * `action=stop` force the camera to stop searching.
     
 ## TODO!
 If you can help with these missing piece of functionality, I would be most grateful.
