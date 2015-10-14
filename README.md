@@ -839,14 +839,6 @@ upnp_camera=
         * Response:
 
 ```
-```
-
-### 
-* Get all  configuration
-    * `/adm/get_group.cgi?group=`
-        * Response:
-
-```
 [EMAIL]
 smtp_enable=1
 smtp_server=
