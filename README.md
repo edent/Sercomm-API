@@ -477,6 +477,59 @@ Sercomm's configuration API uses the concept of "groups".
         * e.g. `/adm/set_group.cgi?group=SYSTEM&ntp_server=0.uk.pool.ntp.org`
     * **Note** some of the properties are *read only*.
 
+* You can see **all** the possible groups by calling
+    * `/adm/get_group.cgi`
+        * Returns:
+        
+```
+[Manufacture]
+[SYSTEM]
+[LOG]
+[NETWORK]
+[WIRELESS]
+[DDNS]
+[HTTP]
+[RTSP_RTP]
+[UPNP]
+[EMAIL]
+[FTP]
+[SMBC]
+[VIDEO]
+[H264]
+[MPEG4]
+[JPEG]
+[STREAMS]
+[AUDIO]
+[USER]
+[IP_FILTER]
+[MOTION]
+[IO]
+[EVENT]
+[QOS]
+[MCWS]
+[HTTP_NOTIFY]
+[HTTP_EVENT]
+[PPPOE]
+[BONJOUR]
+[SDCARD]
+[PTZ]
+```
+
+**Note:** The groups available will depend on which camera you have. For example, not all cameras have an SD Card slot.
+
+### Manufacturer Information
+* The default manufacturer information:
+    * `/adm/get_group.cgi?group=Manufacture`
+        * Response:
+        
+```
+[Manufacture]
+def_name=
+default_ip=192.168.0.99/255.255.255.0
+max_user=20
+summer_chg=1
+conf_status=1
+```
 
 ### System Configuration
 * All the "System" group properties by calling:
@@ -667,7 +720,7 @@ Ethernet or not.
         * `wmm` Use [WMM mode](https://en.wikipedia.org/wiki/Wireless_Multimedia_Extensions). Valid values are 
             * `0` Off 
             * `1` On 
-    * `wpa_ep_auth_type` Set WPA/WPA2 Enterprise authentication type.
+        * `wpa_ep_auth_type` Set WPA/WPA2 Enterprise authentication type.
             * `1` - EAP-TLS 
             * `2` - EAP-TTLS 
         * `wpa_tls_user` Set EAP-TLS user name. Maximum of 64 ASCII characters.
@@ -701,6 +754,22 @@ ddns_update_period=10
 ```
 
 TODO! Many of the DDNS providers no longer work.
+
+### HTTP
+* Get all HTTP configuration
+    * `/adm/get_group.cgi?group=HTTP`
+        * Response:
+
+```
+[HTTP]
+http_mode=1
+http_port2=1
+http_port2_num=8080
+https_mode=1
+ssport_enable=0
+ssport_number=1025
+```
+
 
 ### Real Time Streaming Protocol
 * Get all RTSP configuration
@@ -761,8 +830,595 @@ upnp_camera=
 
 * Properties which can be set using `/adm/set_group.cgi?group=UPNP&$property=$value`
     * `upnp_mode`
-            * `0` Off (Default)
-            * `1` On 
+        * `0` Off (Default)
+        * `1` On 
+
+### EMAIL
+* Get all Email configuration
+    * `/adm/get_group.cgi?group=EMAIL`
+        * Response:
+
+```
+```
+
+### 
+* Get all  configuration
+    * `/adm/get_group.cgi?group=`
+        * Response:
+
+```
+[EMAIL]
+smtp_enable=1
+smtp_server=
+pop_server=
+smtp_port=465
+smtp_auth=1
+smtp_account=
+smtp_password=
+smtp2_enable=0
+smtp2_server=
+pop2_server=
+smtp2_port=25
+smtp2_auth=0
+smtp2_account=
+smtp2_password=
+from_addr=
+from_addr2=
+to_addr1=
+to_addr2=
+to_addr3=
+send_email=1
+email_att=7
+subject=
+smtp_serv_flag=1
+smtp2_serv_flag=1
+
+```
+
+**Note:** The response will *never* display your passwords.
+
+TODO!
+
+### FTP
+* Get all FTP settings
+    * `/adm/get_group.cgi?group=FTP`
+        * Response:
+
+```
+[FTP]
+ftp1=1
+ftp1_server=
+ftp1_account=
+ftp1_passwd=
+ftp1_path=
+ftp1_passive=1
+ftp1_port=21
+ftp2=0
+ftp2_server=
+ftp2_account=
+ftp2_passwd=
+ftp2_path=
+ftp2_passive=0
+ftp2_port=21
+```
+
+**Note:** The response will *never* display your passwords.
+
+
+### Samba
+* Get all Samab configuration
+    * `/adm/get_group.cgi?group=SMBC`
+        * Response:
+
+```
+[SMBC]
+smbc_enable=1
+smbc_server=
+smbc_path=
+smbc_account=
+smbc_passwd=
+smbc_rec_enable=0
+smbc_rec_file_ctrl=1
+smbc_rec_filesize=0
+smbc_rec_duration=15
+smbc_rec_streaming=1
+smbc_rec_mode=1
+smbc_rec_server=
+smbc_rec_path=
+smbc_rec_account=
+smbc_rec_passwd=
+smbc_rec_filename_prefix=
+smbc_rec_behavior=0,0,1
+smbc_rec_schedule=
+smbc_rec_bymd_fn_prefix=
+smbc_rec_bymd_len=
+```
+
+TODO!
+
+### Video
+* Get all Video  configuration
+    * `/adm/get_group.cgi?group=VIDEO`
+        * Response:
+
+```
+[VIDEO]
+video_schedule=0
+video_define1=
+video_define2=
+video_define3=
+video_define4=
+video_define5=
+video_define6=
+video_define7=
+video_define8=
+video_define9=
+video_define10=
+time_stamp=1
+text_overlay=0
+text=
+power_line=50
+color=0
+exposure=4
+sharpness=4
+flip=0
+mirror=0
+hue=4
+saturation=4
+contrast=4
+default_channel=1
+mask_window1=0
+mask_window2=0
+mask_window3=0
+mask_window4=0
+mask_color1=888888
+mask_color2=888888
+mask_color3=888888
+mask_color4=888888
+mask_position1=160,180,480,300
+mask_position2=160,180,480,300
+mask_position3=160,180,480,300
+mask_position4=160,180,480,300
+night_mode=0
+```
+
+TODO!
+
+### H264
+* Get all H264 Video Codec configuration
+    * `/adm/get_group.cgi?group=H264`
+        * Response:
+
+```
+[H264]
+mode=1
+resolution=4
+quality_type=1
+quality_level=5
+bit_rate=768
+frame_rate=25
+gov_length=25
+sp_uri=
+mode2=1
+resolution2=2
+quality_type2=0
+quality_level2=3
+bit_rate2=256
+frame_rate2=10
+gov_length2=10
+sp_uri2=
+mode3=1
+resolution3=2
+quality_type3=0
+quality_level3=3
+bit_rate3=64
+frame_rate3=10
+gov_length3=10
+sp_uri3=
+bandwidth=0
+profile=66
+cropping=0
+bandwidth2=0
+profile2=66
+cropping2=0
+bandwidth3=0
+profile3=66
+cropping3=0
+```
+
+TODO!
+
+### MPEG4
+* Get all MPEG4 configuration
+    * `/adm/get_group.cgi?group=MPEG4`
+        * Response:
+
+```
+[MPEG4]
+mode=1
+resolution=3
+quality_type=1
+quality_level=5
+bit_rate=256
+frame_rate=25
+gov_length=10
+sp_uri=
+mode2=0
+resolution2=1
+quality_type2=1
+quality_level2=3
+bit_rate2=256
+frame_rate2=15
+gov_length2=10
+sp_uri2=
+mode3=0
+resolution3=3
+quality_type3=1
+quality_level3=3
+bit_rate3=1000
+frame_rate3=15
+gov_length3=10
+sp_uri3=
+bandwidth=0
+cropping=0
+bandwidth2=0
+cropping2=0
+bandwidth3=0
+cropping3=0
+```
+
+TODO!
+
+### JPEG
+* Get all JPEG image configuration
+    * `/adm/get_group.cgi?group=JPEG`
+        * Response:
+
+```
+[JPEG]
+mode=1
+resolution=4
+quality_level=3
+frame_rate=15
+sp_uri=
+mode2=0
+resolution2=1
+quality_level2=3
+frame_rate2=15
+sp_uri2=
+mode3=0
+resolution3=3
+quality_level3=3
+frame_rate3=30
+sp_uri3=
+bandwidth=0
+cropping=0
+bandwidth2=0
+cropping2=0
+bandwidth3=0
+cropping3=0
+```
+
+TODO!
+
+### Video Streams
+* Get all video streaming configuration
+    * `/adm/get_group.cgi?group=STREAMS`
+        * Response:
+
+```
+[STREAMS]
+channel1=H264,1
+channel2=JPEG,2
+channel3=MPEG4,3
+```
+
+TODO!
+
+### Audio
+* Get all Audio configuration
+    * `/adm/get_group.cgi?group=AUDIO`
+        * Response:
+
+```
+[AUDIO]
+audio_in=1
+in_volume=1
+in_audio_type=1
+audio_out=0
+out_volume=8
+out_audio_type=0
+audio_mode=1
+operation_mode=1
+in_pcm_sr=8000
+audio_in2=1
+in_pcm_sr2=5512
+in_audio_type2=3
+au_trigger_en=0
+au_trigger_volume=50
+au_trigger_method=0
+```
+
+TODO!
+
+### User Database
+* Get all User information  
+    * `/adm/get_group.cgi?group=USER`
+        * Response:
+
+```
+[USER]
+login_check=1
+admin_timeout=5
+admin_name=admin
+admin_password=
+viewer_name=demo
+viewer_password=
+user1=viewer,
+user2=
+user3=
+user4=
+user5=
+user6=
+user7=
+user8=
+user9=
+user10=
+user11=
+user12=
+user13=
+user14=
+user15=
+user16=
+user17=
+user18=
+user19=
+user20=
+audio_in_ctrl=1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+audio_out_ctrl=1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+pt_ctrl=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+adm_ctrl=0
+io_ctrl=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+```
+
+**Note:** The response will *never* display your passwords.
+
+
+TODO!
+
+### IP Filters
+* Get all IP Filters
+    * `/adm/get_group.cgi?group=IP_FILTER`
+        * Response:
+
+```
+[IP_FILTER]
+ip_filter=0
+ip_filter_rule=0
+ip_filter1=
+ip_filter2=
+ip_filter3=
+ip_filter4=
+ip_filter5=
+ip_filter6=
+ip_filter7=
+ip_filter8=
+ip_filter9=
+ip_filter10=
+ip_filter11=
+ip_filter12=
+ip_filter13=
+ip_filter14=
+ip_filter15=
+ip_filter16=
+ip_filter17=
+ip_filter18=
+ip_filter19=
+ip_filter20=
+```
+
+TODO!
+
+### IO Pins
+
+Some cameras have IO pins on the back.  You can use these to send signals to, or receive signals from the camera.
+
+* Get all IO configuration
+    * `/adm/get_group.cgi?group=IO`
+        * Response:
+
+```
+[IO]
+in1_trigger=0
+in2_trigger=0
+in1_type=3
+in2_type=0
+out1_init=1
+out2_init=1
+out1_button=0,0,10
+out2_button=0,0,10
+out1_action=1
+out2_action=1
+out1_pulse_duration=10
+out2_pulse_duration=10
+```
+
+TODO!
+
+### Quality of Service
+* Get all QOS configuration
+    * `/adm/get_group.cgi?group=QOS`
+        * Response:
+
+```
+[QOS]
+qos_enable=0
+qos_dscp=32
+qos_av_switch=0
+```
+
+TODO!
+
+### MCWS???
+* Get all ??? configuration
+    * `/adm/get_group.cgi?group=MCWS`
+        * Response:
+
+```
+[MCWS]
+url_periodic=
+url_event=
+expire_hours=0
+```
+
+TODO!
+
+### HTTP Events
+* Get all HTTP POST Events configuration
+    * `/adm/get_group.cgi?group=HTTP_EVENT`
+        * Response:
+
+```
+[HTTP_EVENT]
+http_event_en=0
+http_post_en=0
+http_post_user=
+http_post_pass=
+http_post_url=
+```
+
+**Note:** The response will *never* display your passwords.
+
+TODO!
+
+### Point-to-point protocol over Ethernet
+* Get all PPPOE configuration
+    * `/adm/get_group.cgi?group=PPPOE`
+        * Response:
+
+```
+[PPPOE]
+pppoe_enable=0
+pppoe_username=
+pppoe_password=
+pppoe_dod=0
+pppoe_idle_time=300
+pppoe_redial_time=30
+pppoe_hostname=
+pppoe_mtu_type=0
+pppoe_mtu=1492
+```
+
+**Note:** The response will *never* display your passwords.
+
+
+### Bonjour
+* Get all [ZeroConf Networking](https://en.wikipedia.org/wiki/Bonjour_%28software%29) configuration
+    * `/adm/get_group.cgi?group=`
+        * Response:
+
+```
+[BONJOUR]
+bonjour_name=RC8230-92fff7
+bonjour_mode=0
+```
+
+### SD Card
+
+Some cameras have a slot for a MicroSD Card, onto which images and videos can be saved.
+
+* Get SD Card configuration
+    * `/adm/get_group.cgi?group=SDCARD`
+        * Response:
+
+```
+[SDCARD]
+sdcard_rec_enable=0
+sdcard_rec_event_enable=0
+sdcard_rec_audio_enable=0
+sdcard_rec_file_ctrl=1
+sdcard_rec_file_size=10
+sdcard_rec_disk_ctrl=0
+sdcard_rec_duration=60
+sdcard_rec_stream_id=1
+sdcard_rec_filename_prefix=
+sdcard_rec_event_prefix=
+sdcard_rec_schedule=
+sdcard_rec_schedule1=
+sdcard_rec_schedule2=
+sdcard_rec_schedule3=
+sdcard_rec_schedule4=
+sdcard_rec_schedule5=
+sdcard_rec_schedule6=
+sdcard_rec_schedule7=
+sdcard_rec_schedule8=
+sdcard_rec_schedule9=
+sdcard_rec_schedule10=
+```
+
+TODO!
+
+### Pan/Tilt/Zoon
+* Get all PTZ configuration
+    * `/adm/get_group.cgi?group=PTZ`
+        * Response:
+
+```
+[PTZ]
+PtzMode=1
+PtzMdMutex=2
+Preset1Name=
+Preset2Name=
+Preset3Name=
+Preset4Name=
+Preset5Name=
+Preset6Name=
+Preset7Name=
+Preset8Name=
+Preset9Name=
+Preset1Position=
+Preset2Position=
+Preset3Position=
+Preset4Position=
+Preset5Position=
+Preset6Position=
+Preset7Position=
+Preset8Position=
+Preset9Position=
+Patrol1Position=
+PredefineHome=0,0
+PatrolInterval=
+PatrolStyle=0
+```
+
+TODO!
+
+## Firmware
+
+### Firmware Download
+
+* Download the camera's firmware
+    * `/adm/flash_dumper.cgi`
+        * Response is a file called `fw.bin`
+
+### Firmware Upload
+
+It is possible to upgrade the firmware via the API.  I would **strongly** recommend doing this via the GUI to ensure that the upgrade is accepted.
+
+*Never* upload the firmware from one model of camera to a different model.
+
+* Upgrade the camera's firmware using HTTP **POST**
+    * `/adm/upgrade.cgi`
+    * The firmware must be uploaded in base64
+    * Wait at least 5 minutes to ensure that the firmware has been successfully flashed.
+    
+## Software Licenses
+
+The cameras make extensive use of Open Source Software.  You can see the software versions and Open Source Licensing information.
+
+* View software licenses
+    * `/adm/Licenses.txt`
+        * Response: a text file containing the information 
                 
 ## TODO!
 If you can help with these missing piece of functionality, I would be most grateful.
