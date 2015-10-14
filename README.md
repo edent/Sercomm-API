@@ -864,7 +864,6 @@ email_att=7
 subject=
 smtp_serv_flag=1
 smtp2_serv_flag=1
-
 ```
 
 **Note:** The response will *never* display your passwords.
@@ -1411,6 +1410,87 @@ The cameras make extensive use of Open Source Software.  You can see the softwar
 * View software licenses
     * `/adm/Licenses.txt`
         * Response: a text file containing the information 
+        
+## Time Zones
+
+The cameras use a somewhat baroque way of representing Timezones.  Each zone has a number.  Timezones with daylight savings are marked with an asterisk *. 
+
+- `0` (GMT-12:00) International Date Line West 
+- `1` (GMT-11:00) Midway
+- `2` (GMT-10:00) Hawaii 
+- `3` *(GMT-09:00) Alaska
+- `4` *(GMT-08:00) Pacific Time (US & Canada), Tijuana
+- `5` (GMT-07:00) Arizona
+- `6` *(GMT-07:00) Chihuahua, La Paz, Mazatlan
+- `7` *(GMT-07:00) Mountain Time (US & Canada)
+- `8` (GMT-06:00) Central America
+- `9` *(GMT-06:00) Central Time (US & Canada)
+- `10` *(GMT-06:00) Guadalajara, Mexico City, Monterrey
+- `11` (GMT-06:00) Saskatchewan 
+- `12` (GMT-05:00) Bogota, Lima, Quito
+- `13` *(GMT-05:00) Eastern Time (US & Canada) 
+- `14` (GMT-05:00) Indiana (East)
+- `15` *(GMT-04:00) Atlantic Time (Canada) 
+- `16` (GMT-04:00) La Paz 
+- `17` *(GMT-04:00) Santiago
+- `18` *(GMT-03:30) Newfoundland
+- `19` *(GMT-03:00) Brasilia
+- `20` (GMT-03:00) Buenos Aires, Georgetown
+- `21` *(GMT-03:00) Greenland 
+- `22` *(GMT-02:00) Mid-Atlantic
+- `23` *(GMT-01:00) Azores
+- `24` (GMT-01:00) Cape Verde Is.
+- `25` (GMT) Casablanca, Monrovia
+- `26` *(GMT) Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London
+- `27` *(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna
+- `28` *(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague
+- `29` *(GMT+01:00) Brussels, Copenhagen, Madrid, Paris
+- `30` *(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb 
+- `31` (GMT+01:00) West Central Africa 
+- `32` *(GMT+02:00) Athens, Istanbul, Minsk 
+- `33` *(GMT+02:00) Bucharest 
+- `34` *(GMT+02:00) Cairo 
+- `35` (GMT+02:00) Harare, Pretoria 
+- `36` *(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius 
+- `37` (GMT+02:00) Jerusalem 
+- `38` *(GMT+03:00) Baghdad 
+- `39` (GMT+03:00) Kuwait, Riyadh 
+- `40` *(GMT+03:00) Moscow, St. Petersburg, Volgograd 
+- `41` (GMT+03:00) Nairobi 
+- `42` *(GMT+03:30) Tehran 
+- `43` (GMT+04:00) Abu Dhabi, Muscat 
+- `44` *(GMT+04:00) Baku, Tbilisi, Yerevan 
+- `45` (GMT+04:30) Kabul 
+- `46` *(GMT+05:00) Ekaterinburg 
+- `47` (GMT+05:00) Islamabad, Karachi, Tashkent 
+- `48` (GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi 
+- `49` (GMT+05:45) Kathmandu 
+- `50` *(GMT+06:00) Almaty, Novosibirsk 
+- `51` (GMT+06:00) Astana, Dhaka 
+- `52` (GMT+06:00) Sri Jayawardenepura 
+- `53` (GMT+06:30) Rangoon 
+- `54` (GMT+07:00) Bangkok, Hanoi, Jakarta 
+- `55` *(GMT+07:00) Krasnoyarsk 
+- `56` (GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi 
+- `57` *(GMT+08:00) Irkutsk, Ulaan Bataar 
+- `58` (GMT+08:00) Kuala Lumpur, Singapore 
+- `59` (GMT+08:00) Perth 
+- `60` (GMT+08:00) Taipei 
+- `61` (GMT+09:00) Osaka, Sapporo, Tokyo 
+- `62` (GMT+09:00) Seoul 
+- `63` *(GMT+09:00) Yakutsk 
+- `64` *(GMT+09:30) Adelaide 
+- `65` (GMT+09:30) Darwin 
+- `66` (GMT+10:00) Brisbane 
+- `67` *(GMT+10:00) Canberra, Melbourne, Sydney 
+- `68` (GMT+10:00) Guam, Port Moresby 
+- `69` *(GMT+10:00) Hobart 
+- `70` *(GMT+10:00) Vladivostok 
+- `71` (GMT+11:00) Magadan, Solomon Is., New Caledonia 
+- `72` *(GMT+12:00) Auckland, Wellington 
+- `73` (GMT+12:00) Fiji, Kamchatka, Marshall Is. 
+- `74` (GMT+13:00) Nuku'alofa 
+- `75` (GMT-04:30) Caracas
                 
 ## TODO!
 If you can help with these missing piece of functionality, I would be most grateful.
