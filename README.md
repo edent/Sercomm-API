@@ -229,6 +229,25 @@ md_name1=Window 1
     * `/adm/set_group.cgi?group=MOTION&`
     * e.g. `/adm/set_group.cgi?group=MOTION&md_window2=30,60,100,120`
         * Response `OK`
+        
+* Properties which can be set using `/adm/set_group.cgi?group=MOTION&$property=$value`.
+    * `md_mode` Motion detection mode 
+        * `0` Off
+        * `1` On (Default)
+    * `md_point`  The position of motion using PT mode. The format is `X,Y` 
+        * X's range is `-63` to `63`
+        * X's range is `-36` to `28`
+    * `md_switch` `[1-4]` Set whether a motion detection window is active.
+        * `0` Off
+        * `1` On 
+    * `md_name` `[1-4]` Set the name of a motion detection window.
+        * Maximum 12 ASCII characters.
+    * `md_window` `[1-4]` Set the co-ordinates of the motion detection window. No matter the resolution of the camera, the area is considered to be 640*480 is active.
+    * The format is X0,Y0,X1,Y1.
+        * X's range is `0` to `639`
+        * Y's range is `0` to `479` 
+    * `md_threshold` `[1-4]` Set the threshold(???) for the motion detection window.
+        * Range is `0` to `255`
 
 ### Notification
 You can set the cameras to perform an action when motion is detected.
@@ -973,6 +992,41 @@ mask_position4=160,180,480,300
 night_mode=0
 ```
 
+* Properties which can be set using `/adm/get_group.cgi?group=VIDEO`
+    * `time_stamp` Display a date / timestamp on the images
+        * `0` Off
+        * `1` On
+    * `text_overlay` Display a line of text on the images
+        * `0` Off
+        * `1` On
+    * `text` The text to display
+        * Maximum of 20 ASCII characters
+    * `power_line` Adjust the picture to reduce flicker from lights.  This should be set the to Hz of your electrical grid.
+        * `50` UK / Europe
+        * `60` USA  
+    * `color` Configure the colour balance of the picture
+        * `0` Auto
+        * `1` Indoors
+        * `2` White lighting
+        * `3` Yellow lighting
+        * `4` Outdoor
+        * `5` Black and White
+    * `exposure` brightness of the image. Range of `1` to `7`
+        * `1` Darkest
+        * `7` Brightest
+    * `sharpness` Sharpness of the image. Range of `1` to `7`
+        * `1` Least sharp
+        * `7` Most sharp
+    * `flip` Veritcally flip the images - useful if the camera has been installed upside down.
+        * `0` Off
+        * `1` On
+    * `mirror` Horizontal flip the images
+        * `0` Off
+        * `1` On
+     * `time_stamp` Display a date / timestamp on the images
+        * `0` Off
+        * `1` On
+        
 TODO!
 
 ### H264
@@ -1402,6 +1456,22 @@ It is possible to upgrade the firmware via the API.  I would **strongly** recomm
     * `/adm/upgrade.cgi`
     * The firmware must be uploaded in base64
     * Wait at least 5 minutes to ensure that the firmware has been successfully flashed.
+    
+## Reboot and Reset
+
+These controls allow you to reboot/restart the camera.  You can also reset it to its system defaults.
+
+**Note:** There is *no confirmation prompt!* Once you issue these commands, they will execute immediately.
+
+* Reboot the camera
+    * `/adm/reboot.cgi`
+        * Response `OK`
+        * Camera will immediately restart.
+
+* Factory reset the camera
+    * `/adm/reset_to_default.cgi`
+        * Response `OK`
+        * Camera will immediately factory reset.
     
 ## Software Licenses
 
