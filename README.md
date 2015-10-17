@@ -5,6 +5,7 @@ This is designed to be a fairly comprehensive set of API documentation for [SerC
 These API calls have been tested on the following cameras:
 
 * RC8221 - a basic internal camera.
+* RC8221D - a modified version of the above camera.
 * OC821D - an external camera with weatherproof features.
 * RC8230 - a pan/tilt camera.
 
@@ -64,14 +65,51 @@ Many cameras have a "hidden" 720p resolution.  This can be activated for video a
 ### Pan / Tilt Movement
 For cameras which have moveable lenses, it is possible to control the direction the camera is facing.
 
+* The pan/tilt can be controlled in to different ways.
+    * `/pt/ptctrl.cgi?mv=$Direction,$Distance`
+
+Where `$Direction` can be `U`p, `D`own, `L`eft, `R`ight.
+
+And `$Distance` can be any positive integer.
+
+The maximum `U` and `D` value is `64`.
+
+The maximum `L` and `R` value is `??`.
+
+For example:
+
 * Left
-    * `/pt/ptctrl.cgi?mv=L,11`
+    * `/pt/ptctrl.cgi?mv=L,10`
 * Right
-    * `/pt/ptctrl.cgi?mv=R,11`
+    * `/pt/ptctrl.cgi?mv=R,10`
 * Up
     * `/pt/ptctrl.cgi?mv=U,10`
 * Down
     * `/pt/ptctrl.cgi?mv=D,10`
+
+Diagonal moves can also be made:
+
+* Up Left
+    * `/pt/ptctrl.cgi?mv=UL,10`
+* Up Right
+    * `/pt/ptctrl.cgi?mv=UR,10`
+* Down Left
+    * `/pt/ptctrl.cgi?mv=DL,10`
+* Down Right
+    * `/pt/ptctrl.cgi?mv=DR,10`
+    
+There are preset locations which can be accessed
+
+* Motion Detection (Unsure TODO!)
+    * `/pt/ptctrl.cgi?preset=move,100`
+* Camera Patrol (Unsure TODO!)
+    * `/pt/ptctrl.cgi?preset=move,101`
+* Pan right, then left (once)
+    * `/pt/ptctrl.cgi?preset=move,102`
+* Move to home position
+    * `/pt/ptctrl.cgi?preset=move,103`
+* Calibration (Move the full range of motion)
+    * `/pt/ptctrl.cgi?preset=move,104`
 
 There is no response sent in reply to these commands - although you should be able to see the camera move.
 
@@ -127,7 +165,7 @@ There are several ways you can get video and audio out of the cameras.
     * `/img/media.sdp`
 
 #### RTP/RTSP 
-The following cn be accessed via the `rtsp://` protocol.
+The following can be accessed via the `rtsp://` protocol.
 
 * Video and Audio
     * `/img/media.sav`
@@ -140,6 +178,9 @@ The following cn be accessed via the `rtsp://` protocol.
 * Should you want to view the video in Flash
     * `/img/media.swf`
     * `/img/media.flv`
+    
+* With a GUI
+    * `/img/sc_flvplayer.swf`
 
 ### Motion Detection
 This is *really* tricky!
