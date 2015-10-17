@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vendors>
+    <vendor name="Sercomm">
+        <model name="OC821D">
+            <request name="Push">/img/video.mjpeg</request>
+            <request name="RTSP">/img/media.sav</request>
+        </model>
+        <model name="RC8221">
+            <request name="Push">/img/video.mjpeg</request>
+            <request name="RTSP">/img/media.sav</request>
+        </model>
+                <model name="RC8221D">
+            <request name="Push">/img/video.mjpeg</request>
+            <request name="RTSP">/img/media.sav</request>
+        </model>
+        <model name="RC8230">
+            <request name="Push">/img/video.mjpeg</request>
+            <request name="RTSP">/img/media.sav</request>
+            <request name="PtzMoveHome">/pt/ptctrl.cgi?preset=move,103</request>
+            <request name="PtzMoveRelLeft">/pt/ptctrl.cgi?mv=L,10</request>
+            <request name="PtzMoveRelRight">/pt/ptctrl.cgi?mv=R,10</request>
+            <request name="PtzMoveRelUp">/pt/ptctrl.cgi?mv=U,10</request>
+            <request name="PtzMoveRelDown">/pt/ptctrl.cgi?mv=D,10</request>
+        </model>
+    </vendor>
+</vendors>
