@@ -34,6 +34,14 @@ All API calls are `GET` except where noted.
 
 Responses are in plain text except where noted.
 
+### Enable the UI
+Some cameras don't show a menu by default.
+
+* This command is used to [activate the administration menu](https://github.com/edent/Sercomm-API/issues/1) on vendor modified firmwares such as Comcast Xfinity, Cox Homelife and ADT Pulse.
+   * `/adm/enable_ui.cgi`
+   * Response `OK`
+
+
 ### Increase Resolution
 Many cameras have a "hidden" 720p resolution.  This can be activated for video and still images.
 
