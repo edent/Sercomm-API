@@ -303,7 +303,7 @@ You can set the cameras to perform an action when motion is detected.
 
 #### HTTP Notification
 * Get the current configuration
-    * `/adm/get_group.cgi?group=MOTION`
+    * `/adm/get_group.cgi?group=HTTP_NOTIFY`
     * Response
 
 ```
