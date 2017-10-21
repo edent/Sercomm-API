@@ -8,6 +8,7 @@ These API calls have been tested on the following cameras:
 * RC8221D - a modified version of the above camera.
 * OC821D - an external camera with weatherproof features.
 * RC8230 - a pan/tilt camera.
+* iCamera1 - a POE external camera.
 
 Sercomm supplies cameras to a number of partners - each with a custom firmware.  It is possible your camera does not have access to all these API calls.
 
