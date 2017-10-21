@@ -1610,7 +1610,17 @@ The cameras use a somewhat baroque way of representing Timezones.  Each zone has
 - `73` (GMT+12:00) Fiji, Kamchatka, Marshall Is. 
 - `74` (GMT+13:00) Nuku'alofa 
 - `75` (GMT-04:30) Caracas
-                
+
+## Telnet
+
+Some cameras will allow Telnet access.
+
+* Activate Telnet
+    * ` /adm/file.cgi?todo=inject_telnetd`
+        * Response: if successful, you will see `Open Telnet Daemon successfully!`
+
+Username and password coming soon ;-)
+
 ## TODO!
 If you can help with these missing piece of functionality, I would be most grateful.
 
