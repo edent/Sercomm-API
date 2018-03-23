@@ -638,9 +638,9 @@ wd_reboot_time=1444713006;1444585286
         * `24-hour`
         * `12-hour`
     * `date_format` Valid values are
-        * `1` ???
-        * `2` ???
-        * `3` ???
+        * `0` YYYY-MM-DD
+        * `1` MM/DD/YYYY
+        * `2` DD/MM/YYYY
     * `time_zone` Valid values are 0-75.
     * `daylight_saving` Valid values are
         * `0` Off 
