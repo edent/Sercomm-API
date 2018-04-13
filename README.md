@@ -741,7 +741,7 @@ wpa_ascii=
 wmm=0
 ```
 
-* Properties which can be set using `/adm/set_group.cgi?group=NETWORK&$property=$value`.
+* Properties which can be set using `/adm/set_group.cgi?group=WIRELESS&$property=$value`.
     * `wlan_type`   Valid values are 
         * `0` Ad hoc
         * `1` Infrastructure 
