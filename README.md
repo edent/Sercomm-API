@@ -901,6 +901,7 @@ upnp_camera=
     * `upnp_mode`
         * `0` Off (Default)
         * `1` On 
+- NOTE: On an RC8025b-ADT, this is the only way to enable/disable UPNP.  Setting it from the webpage GUI results in an `"Invalid Group"` error and the change is not saved.
 
 ### EMAIL
 * Get all Email configuration
