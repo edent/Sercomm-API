@@ -9,6 +9,7 @@ These API calls have been tested on the following cameras:
 * OC821D - an external camera with weatherproof features.
 * RC8230 - a pan/tilt camera.
 * iCamera1 - a POE external camera.
+* RC8025b-ADT - A version of RC8221 with similar functionality for ADT Pulse
 
 Sercomm supplies cameras to a number of partners - each with a custom firmware.  It is possible your camera does not have access to all these API calls.
 
@@ -1620,7 +1621,54 @@ Some cameras will allow Telnet access.
     * ` /adm/file.cgi?todo=inject_telnetd`
         * Response: if successful, you will see `Open Telnet Daemon successfully!`
 
-Username and password coming soon ;-)
+* (confirmed to work on RC8025b-ADT)
+- username: `root`
+- password: `Aq0+0009`
+
+List of available telnet commands:
+```
+- .
+- :
+- [
+- [[
+- alias
+- bg
+- break
+- cd
+- chdir
+- continue
+- echo
+- eval
+- exec
+- exit
+- export
+- false
+- fg
+- hash
+- help
+- jobs
+- kill
+- let
+- local
+- printf
+- pwd
+- read
+- readonly
+- return
+- set
+- shift
+- source
+- test
+- times
+- trap
+- true
+- type
+- ulimit
+- umask
+- unalias
+- unset
+- wait
+```
 
 ## TODO!
 If you can help with these missing piece of functionality, I would be most grateful.
