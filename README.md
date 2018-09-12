@@ -13,6 +13,9 @@ These API calls have been tested on the following cameras:
 
 Sercomm supplies cameras to a number of partners - each with a custom firmware.  It is possible your camera does not have access to all these API calls.
 
+[![Buy me a coffee](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/edent)
+
+
 ## Accessing The Cameras
 Your camera may have been supplied with a username and password.  If you do not know what these credentials are, you can reset the camera to its defaults.
 
